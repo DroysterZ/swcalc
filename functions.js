@@ -111,53 +111,36 @@ function getMaxStatusRuna(runa, flat = true) {
 	}
 }
 
+function getRunesStats(runas) {
+	let stats = {
+		hp: 0,
+		atk: 0,
+		def: 0,
+		spd: 0,
+		cr: 0,
+		cd: 0,
+		res: 0,
+		acc: 0
+	}
+	for (i of [1, 3, 5]) {
+		let runa = runas.slots[i]
+		stats[runa.stat] += getMaxStatusRuna(runa.stat)
+	}
+
+	for (i of [2, 4, 6]) {
+		let runa = runas.slots[i]
+		temp = getMaxStatusRuna(runa.stat, runa.flat)
+
+		if (runa.flat == false) {
+			temp = statusBase[runa.stat] * (temp / 100)
+		}
+		stats[runa.stat] += temp
+	}
+	return stats;
+}
+
 function checkPossibleStatusPerRune(runes) {
-	let stats = [
-		{
-			stat: 'hp',
-			flat: false,
-		},
-		{
-			stat: 'hp',
-			flat: true,
-		},
-		{
-			stat: 'atk',
-			flat: false,
-		},
-		{
-			stat: 'atk',
-			flat: true,
-		},
-		{
-			stat: 'def',
-			flat: false,
-		},
-		{
-			stat: 'def',
-			flat: true,
-		},
-		{
-			stat: 'spd',
-			flat: true,
-		},
-		{
-			stat: 'cr',
-			flat: true,
-		},
-		{
-			stat: 'cd',
-			flat: true,
-		},
-		{
-			stat: 'res',
-			flat: true,
-		},
-		{
-			stat: 'acc',
-			flat: true,
-		},
-	]
+	let stats = ['hp', 'atk', 'def', 'spd', 'cr', 'cd', 'res', 'acc'];
 
 	let possibilities = {
 		1: [],
@@ -168,13 +151,9 @@ function checkPossibleStatusPerRune(runes) {
 		6: []
 	}
 
-	for (s in stats) {
-		for (p in possibilities) {
-			if (runes.slots[p].stat != stats[s].stat || runes.slots[p].flat != stats[s].flat) {
-				if (!(stats[s].stat == 'def' && p == 1) && !(stats[s].stat == 'atk' && p == 3)) {
-					possibilities[p].push(stats[s]);
-				}
-			}
+	for (p in possibilities) {
+		for (s in stats) {
+			
 		}
 	}
 

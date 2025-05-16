@@ -1,4 +1,4 @@
-// -------- status base e status desejado
+// ---- status base e status desejado
 let statusBase = {
 	hp: 9555,
 	atk: 747,
@@ -21,7 +21,7 @@ let statusDesejado = {
 	acc: 0
 }
 
-// -------- runas e artefatos selecionados
+// ---- runas e artefatos selecionados
 // TODO: runas pares e artefatos devem ser selecionaveis
 
 let runas = {
@@ -67,36 +67,10 @@ let artefatos = {
 }
 
 
-// -------- calcular os status que ja temos de runas e artefatos
-// depois disso, vamos transformar os status que faltam
-// em porcentagem, essa porcentagem vai ser o retorno para
-// calcular quantos subs serao necessarios nas runas
+// ---- calculo para identificar os status que estao faltando
+// para buscar esses status nas subs
 
-let statusRunas = {
-	hp: 0,
-	atk: 0,
-	def: 0,
-	spd: 0,
-	cr: 0,
-	cd: 0,
-	res: 0,
-	acc: 0
-}
-for (i of [1, 3, 5]) {
-	let runa = runas.slots[i]
-	statusRunas[runa.stat] += getMaxStatusRuna(runa.stat)
-}
-
-for (i of [2, 4, 6]) {
-	let runa = runas.slots[i]
-	temp = getMaxStatusRuna(runa.stat, runa.flat)
-
-	if (runa.flat == false) {
-		temp = statusBase[runa.stat] * (temp / 100)
-	}
-	statusRunas[runa.stat] += temp
-}
-
+let statusRunas = getRunesStats(runas)
 let statusSetRunas = getSetsStats(runas.sets)
 let statusArtefatos = getArtStats(artefatos)
 
@@ -112,14 +86,15 @@ let statusFixos = {
 }
 
 let statusFaltantes = {
-	hp: Math.max(statusDesejado.hp - statusFixos.hp, 0),
-	atk: Math.max(statusDesejado.atk - statusFixos.atk, 0),
-	def: Math.max(statusDesejado.def - statusFixos.def, 0),
-	spd: Math.max(statusDesejado.spd - statusFixos.spd, 0),
-	cr: Math.max(statusDesejado.cr - statusFixos.cr, 0),
-	cd: Math.max(statusDesejado.cd - statusFixos.cd, 0),
-	res: Math.max(statusDesejado.res - statusFixos.res, 0),
-	acc: Math.max(statusDesejado.acc - statusFixos.acc, 0),
+	hp: Math.ceil(Math.max(statusDesejado.hp - statusFixos.hp, 0)),
+	atk: Math.ceil(Math.max(statusDesejado.atk - statusFixos.atk, 0)),
+	def: Math.ceil(Math.max(statusDesejado.def - statusFixos.def, 0)),
+	spd: Math.ceil(Math.max(statusDesejado.spd - statusFixos.spd, 0)),
+	cr: Math.ceil(Math.max(statusDesejado.cr - statusFixos.cr, 0)),
+	cd: Math.ceil(Math.max(statusDesejado.cd - statusFixos.cd, 0)),
+	res: Math.ceil(Math.max(statusDesejado.res - statusFixos.res, 0)),
+	acc: Math.ceil(Math.max(statusDesejado.acc - statusFixos.acc, 0)),
 }
 
-console.log(statusFaltantes)
+let possibilidades = checkPossibleStatusPerRune(runas)
+console.log(possibilidades)
