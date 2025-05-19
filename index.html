@@ -1,2 +1,80 @@
-<script src="functions.js"></script>
-<script src="swcalc.js"></script>
+<script src="swcalc/functions.js"></script>
+<script src="swcalc/swcalc.js"></script>
+<div>
+	<div>
+		<div>
+			<select name="rune2-attr" id="rune2-attr">
+				<option value="hp">HP%</option>
+				<option value="atk">ATK%</option>
+				<option value="def">DEF%</option>
+				<option value="spd">SPD</option>
+				<option value="cr">C.R.%</option>
+				<option value="cd">C.D.%</option>
+				<option value="res">RES%</option>
+				<option value="acc">ACC%</option>
+			</select>
+		</div>
+		<div>
+			<select name="rune4-attr" id="rune4-attr">
+				<option value="hp">HP%</option>
+				<option value="atk">ATK%</option>
+				<option value="def">DEF%</option>
+				<option value="spd">SPD</option>
+				<option value="cr">C.R.%</option>
+				<option value="cd">C.D.%</option>
+				<option value="res">RES%</option>
+				<option value="acc">ACC%</option>
+			</select>
+		</div>
+		<div>
+			<select name="rune6-attr" id="rune6-attr">
+				<option value="hp">HP%</option>
+				<option value="atk">ATK%</option>
+				<option value="def">DEF%</option>
+				<option value="spd">SPD</option>
+				<option value="cr">C.R.%</option>
+				<option value="cd">C.D.%</option>
+				<option value="res">RES%</option>
+				<option value="acc">ACC%</option>
+			</select>
+		</div>
+
+		<button onclick="calcularRunas()">CALCULAR</button>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td>HP%</td>
+				<td id="status-hp">1</td>
+			</tr>
+			<tr>
+				<td>ATK%</td>
+				<td id="status-atk">1</td>
+			</tr>
+			<tr>
+				<td>DEF%</td>
+				<td id="status-def">1</td>
+			</tr>
+			<tr>
+				<td>SPD</td>
+				<td id="status-spd">1</td>
+			</tr>
+			<tr>
+				<td>C.R.%</td>
+				<td id="status-cr">1</td>
+			</tr>
+			<tr>
+				<td>C.D.%</td>
+				<td id="status-cd">1</td>
+			</tr>
+			<tr>
+				<td>RES%</td>
+				<td id="status-res">1</td>
+			</tr>
+			<tr>
+				<td>ACC%</td>
+				<td id="status-acc">1</td>
+			</tr>
+		</table>
+	</div>
+</div>

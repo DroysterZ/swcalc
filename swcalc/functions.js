@@ -51,35 +51,35 @@ function getSetsStats(sets) {
 		let set = sets[s]
 		switch (set) {
 			case 'energy':
-				stats.hp = 15
+				stats.hp += 15
 				break
 
 			case 'fatal':
-				stats.atk = 35
+				stats.atk += 35
 				break
 
 			case 'guard':
-				stats.def = 15
+				stats.def += 15
 				break
 
 			case 'swift':
-				stats.spd = 25
+				stats.spd += 25
 				break
 
 			case 'blade':
-				stats.cr = 12
+				stats.cr += 12
 				break
 
 			case 'rage':
-				stats.cd = 40
+				stats.cd += 40
 				break
 
 			case 'endure':
-				stats.res = 20
+				stats.res += 20
 				break
 
 			case 'focus':
-				stats.acc = 20
+				stats.acc += 20
 				break
 		}
 	}
@@ -238,7 +238,7 @@ function getGrindstoneStatus(stat) {
 	return undefined;
 }
 
-function getRunesStats(runas) {
+function getRunesStats(runas, base) {
 	let stats = {
 		hp: 0,
 		atk: 0,
@@ -259,7 +259,7 @@ function getRunesStats(runas) {
 		temp = getMaxStatusRuna(runa.stat, runa.flat)
 
 		if (runa.flat == false) {
-			temp = statusBase[runa.stat] * (temp / 100)
+			temp = base[runa.stat] * (temp / 100)
 		}
 		stats[runa.stat] += temp
 	}
