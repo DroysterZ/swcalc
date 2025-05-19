@@ -1,22 +1,22 @@
 // status base e status desejado
 let statusBase = {
-	hp: 9555,
-	atk: 747,
-	def: 593,
+	hp: 12015,
+	atk: 714,
+	def: 626,
 	spd: 101,
-	cr: 15,
+	cr: 30,
 	cd: 50,
 	res: 15,
 	acc: 0
 }
 
 let statusDesejado = {
-	hp: 0,
-	atk: 1600,
-	def: 0,
-	spd: 88,
+	hp: 20000,
+	atk: 1000,
+	def: 600,
+	spd: 123,
 	cr: 100,
-	cd: 200,
+	cd: 0,
 	res: 0,
 	acc: 0
 }
@@ -26,8 +26,8 @@ let statusDesejado = {
 
 let runas = {
 	sets: [
-		'rage',
-		'blade'
+		'violent',
+		'destroy'
 	],
 	slots: {
 		1: {
@@ -35,7 +35,7 @@ let runas = {
 			flat: true
 		},
 		2: {
-			stat: 'atk',
+			stat: 'spd',
 			flat: false
 		},
 		3: {
@@ -43,7 +43,7 @@ let runas = {
 			flat: true
 		},
 		4: {
-			stat: 'cd',
+			stat: 'cr',
 			flat: true
 		},
 		5: {
@@ -51,7 +51,7 @@ let runas = {
 			flat: true
 		},
 		6: {
-			stat: 'atk',
+			stat: 'hp',
 			flat: false
 		}
 	}
@@ -247,19 +247,28 @@ for (s in statusParaBuscar) {
 		}
 		if (status.grind.value > 0) break
 	}
-
-	/*
-	if (gem.hero.max > status.value) {
-		status.gem.value = gem.hero.max
-		status.gem.raridade = 'hero'
-	} else if (grind != undefined && gem.hero.max + grind.hero.max > status.value) {
-		status.gem.value = gem.hero.max
-		status.gem.raridade = 'hero'
-
-		status.grind.value = grind.hero.max
-		status.grind.raridade = 'hero'
-	}
-		*/
 }
 
-console.log('Status para buscar:', statusParaBuscar)
+let runasFinais = {
+	1: [],
+	2: [],
+	3: [],
+	4: [],
+	5: [],
+	6: []
+}
+
+for (s in statusParaBuscar) {
+	let status = statusParaBuscar[s]
+	status.atributo = s
+	if (status.value == 0) continue
+
+	for (r in runasFinais) {
+		runa = runasFinais[r]
+
+		if (possibilidades[r].includes(s))
+			runa.push(status)
+	}
+}
+
+console.log(runasFinais)
