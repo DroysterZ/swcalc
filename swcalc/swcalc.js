@@ -1,23 +1,23 @@
 // status base e status desejado
 let statusBase = {
-	hp: 12015,
+	hp: 11850,
 	atk: 714,
-	def: 626,
-	spd: 101,
-	cr: 30,
+	def: 637,
+	spd: 100,
+	cr: 15,
 	cd: 50,
-	res: 15,
+	res: 40,
 	acc: 0
 }
 
 let statusDesejado = {
-	hp: 20000,
-	atk: 1000,
-	def: 600,
-	spd: 123,
-	cr: 100,
+	hp: 40450,
+	atk: 700,
+	def: 1190,
+	spd: 0,
+	cr: 0,
 	cd: 0,
-	res: 0,
+	res: 100,
 	acc: 0
 }
 
@@ -26,8 +26,9 @@ let statusDesejado = {
 
 let runas = {
 	sets: [
-		'violent',
-		'destroy'
+		'energy',
+		'energy',
+		'energy'
 	],
 	slots: {
 		1: {
@@ -35,7 +36,7 @@ let runas = {
 			flat: true
 		},
 		2: {
-			stat: 'spd',
+			stat: 'hp',
 			flat: false
 		},
 		3: {
@@ -43,8 +44,8 @@ let runas = {
 			flat: true
 		},
 		4: {
-			stat: 'cr',
-			flat: true
+			stat: 'hp',
+			flat: false
 		},
 		5: {
 			stat: 'hp',
@@ -59,10 +60,10 @@ let runas = {
 
 let artefatos = {
 	1: {
-		stat: 'atk'
+		stat: 'hp'
 	},
 	2: {
-		stat: 'atk'
+		stat: 'hp'
 	}
 }
 
@@ -75,10 +76,10 @@ let statusSetRunas = getSetsStats(runas.sets)
 let statusArtefatos = getArtStats(artefatos)
 
 let statusFixos = {
-	hp: statusArtefatos.hp.value + statusSetRunas.hp + statusRunas.hp,
-	atk: statusArtefatos.atk.value + statusSetRunas.atk + statusRunas.atk,
-	def: statusArtefatos.def.value + statusSetRunas.def + statusRunas.def,
-	spd: statusSetRunas.spd + statusRunas.spd,
+	hp: statusArtefatos.hp.value + (statusBase.hp * statusSetRunas.hp) / 100 + statusRunas.hp,
+	atk: statusArtefatos.atk.value + (statusBase.atk * statusSetRunas.atk / 100) + statusRunas.atk,
+	def: statusArtefatos.def.value + (statusBase.def * statusSetRunas.def / 100) + statusRunas.def,
+	spd: statusSetRunas.spd + (statusBase.spd * statusRunas.spd / 100),
 	cr: statusSetRunas.cr + statusRunas.cr + statusBase.cr,
 	cd: statusSetRunas.cd + statusRunas.cd + statusBase.cd,
 	res: statusSetRunas.res + statusRunas.res + statusBase.res,
