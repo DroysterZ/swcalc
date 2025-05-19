@@ -111,6 +111,131 @@ function getMaxStatusRuna(runa, flat = true) {
 	}
 }
 
+function getGemstoneStatus(stat) {
+	switch (stat) {
+		case 'hp':
+		case 'atk':
+		case 'def':
+			return {
+				rare: {
+					min: 5,
+					max: 9
+				},
+				hero: {
+					min: 7,
+					max: 11
+				},
+				legend: {
+					min: 9,
+					max: 13
+				}
+			}
+
+		case 'spd':
+			return {
+				rare: {
+					min: 3,
+					max: 6
+				},
+				hero: {
+					min: 5,
+					max: 8
+				},
+				legend: {
+					min: 7,
+					max: 10
+				}
+			}
+
+		case 'cr':
+			return {
+				rare: {
+					min: 3,
+					max: 5
+				},
+				hero: {
+					min: 4,
+					max: 7
+				},
+				legend: {
+					min: 6,
+					max: 9
+				}
+			}
+
+		case 'cd':
+			return {
+				rare: {
+					min: 4,
+					max: 6
+				},
+				hero: {
+					min: 5,
+					max: 8
+				},
+				legend: {
+					min: 7,
+					max: 10
+				}
+			}
+
+		case 'res':
+		case 'acc':
+			return {
+				rare: {
+					min: 5,
+					max: 8
+				},
+				hero: {
+					min: 6,
+					max: 9
+				},
+				legend: {
+					min: 8,
+					max: 11
+				}
+			}
+	}
+}
+
+function getGrindstoneStatus(stat) {
+	switch (stat) {
+		case 'hp':
+		case 'atk':
+		case 'def':
+			return {
+				rare: {
+					min: 3,
+					max: 6
+				},
+				hero: {
+					min: 4,
+					max: 7
+				},
+				legend: {
+					min: 5,
+					max: 10
+				}
+			}
+
+		case 'spd':
+			return {
+				rare: {
+					min: 2,
+					max: 3
+				},
+				hero: {
+					min: 3,
+					max: 4
+				},
+				legend: {
+					min: 4,
+					max: 5
+				}
+			}
+	}
+}
+
 function getRunesStats(runas) {
 	let stats = {
 		hp: 0,
