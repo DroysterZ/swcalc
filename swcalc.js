@@ -1,4 +1,4 @@
-// ---- status base e status desejado
+// status base e status desejado
 let statusBase = {
 	hp: 9555,
 	atk: 747,
@@ -21,7 +21,7 @@ let statusDesejado = {
 	acc: 0
 }
 
-// ---- runas e artefatos selecionados
+// runas e artefatos selecionados
 // TODO: runas pares e artefatos devem ser selecionaveis
 
 let runas = {
@@ -67,7 +67,7 @@ let artefatos = {
 }
 
 
-// ---- calculo para identificar os status que estao faltando
+// calculo para identificar os status que estao faltando
 // para buscar esses status nas subs
 
 let statusRunas = getRunesStats(runas)
@@ -97,7 +97,7 @@ let statusFaltantes = {
 }
 
 
-// ---- mapeia as possibilidades de status por cada runa
+// mapeia as possibilidades de status por cada runa
 let possibilidades = checkPossibleStatusPerRune(runas)
 
 let mapPossibilidades = []
@@ -112,14 +112,115 @@ for (p in possibilidades) {
 	}
 }
 
-
+// status para buscar dividido pelas runas
 let statusParaBuscar = {
-	hp: Math.ceil(statusFaltantes.hp * 100 / statusBase.hp / mapPossibilidades['hp']),
-	atk: Math.ceil(statusFaltantes.atk * 100 / statusBase.atk / mapPossibilidades['atk']),
-	def: Math.ceil(statusFaltantes.def * 100 / statusBase.def / mapPossibilidades['def']),
-	spd: Math.ceil(statusFaltantes.spd / mapPossibilidades['spd']),
-	cr: Math.ceil(statusFaltantes.cr / mapPossibilidades['cr']),
-	cd: Math.ceil(statusFaltantes.cd / mapPossibilidades['cd']),
-	res: Math.ceil(statusFaltantes.res / mapPossibilidades['res']),
-	acc: Math.ceil(statusFaltantes.acc / mapPossibilidades['acc']),
+	hp: {
+		value: Math.ceil(statusFaltantes.hp * 100 / statusBase.hp / mapPossibilidades['hp']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	atk: {
+		value: Math.ceil(statusFaltantes.atk * 100 / statusBase.atk / mapPossibilidades['atk']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	def: {
+		value: Math.ceil(statusFaltantes.def * 100 / statusBase.def / mapPossibilidades['def']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	spd: {
+		value: Math.ceil(statusFaltantes.spd / mapPossibilidades['spd']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	cr: {
+		value: Math.ceil(statusFaltantes.cr / mapPossibilidades['cr']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	cd: {
+		value: Math.ceil(statusFaltantes.cd / mapPossibilidades['cd']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	res: {
+		value: Math.ceil(statusFaltantes.res / mapPossibilidades['res']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+	acc: {
+		value: Math.ceil(statusFaltantes.acc / mapPossibilidades['acc']),
+		gem: {
+			value: 0,
+			raridade: ''
+		},
+		grind: {
+			value: 0,
+			raridade: ''
+		}
+	},
+}
+
+// TODO: verificar dinamicamente as gemas e grinds
+// incluir rare e legend com seus valores min e max
+for (s in statusParaBuscar) {
+	let status = statusParaBuscar[s]
+	if (status.value == 0) continue
+
+	let gem = getGemstoneStatus(s)
+	let grind = getGrindstoneStatus(s)
+
+	if (gem.hero.max > status.value) {
+		status.gem.value = gem.hero.max
+		status.gem.raridade = 'hero'
+	} else if (grind != undefined && gem.hero.max + grind.hero.max > status.value) {
+		status.gem.value = gem.hero.max
+		status.gem.raridade = 'hero'
+
+		status.grind.value = grind.hero.max
+		status.grind.raridade = 'hero'
+	}
 }

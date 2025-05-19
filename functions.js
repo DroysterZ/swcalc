@@ -234,6 +234,8 @@ function getGrindstoneStatus(stat) {
 				}
 			}
 	}
+
+	return undefined;
 }
 
 function getRunesStats(runas) {
