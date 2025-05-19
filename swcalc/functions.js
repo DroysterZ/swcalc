@@ -238,7 +238,7 @@ function getGrindstoneStatus(stat) {
 	return undefined;
 }
 
-function getRunesStats(runas) {
+function getRunesStats(runas, base) {
 	let stats = {
 		hp: 0,
 		atk: 0,
@@ -259,7 +259,7 @@ function getRunesStats(runas) {
 		temp = getMaxStatusRuna(runa.stat, runa.flat)
 
 		if (runa.flat == false) {
-			temp = statusBase[runa.stat] * (temp / 100)
+			temp = base[runa.stat] * (temp / 100)
 		}
 		stats[runa.stat] += temp
 	}
