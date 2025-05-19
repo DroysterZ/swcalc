@@ -213,6 +213,42 @@ for (s in statusParaBuscar) {
 	let gem = getGemstoneStatus(s)
 	let grind = getGrindstoneStatus(s)
 
+	let raridades = ['rare', 'hero']
+
+	for (r of raridades) {
+		for (let i = gem[r].min; i <= gem[r].max; i++) {
+			if (status.value <= i) {
+				status.gem.value = i
+				status.gem.raridade = r
+				break
+			}
+		}
+		if (status.gem.value > 0) break
+	}
+
+	if (status.gem.value > 0 || grind == undefined) continue
+
+	for (r of raridades) {
+		for (let i = gem[r].min; i <= gem[r].max; i++) {
+			for (rg of raridades) {
+				for (let j = grind[rg].min; j <= grind[rg].max; j++) {
+					if (status.value <= i + j) {
+						status.gem.value = i
+						status.gem.raridade = r
+
+						status.grind.value = j
+						status.grind.raridade = rg
+						break
+					}
+				}
+				if (status.grind.value > 0) break
+			}
+			if (status.grind.value > 0) break
+		}
+		if (status.grind.value > 0) break
+	}
+
+	/*
 	if (gem.hero.max > status.value) {
 		status.gem.value = gem.hero.max
 		status.gem.raridade = 'hero'
@@ -223,4 +259,7 @@ for (s in statusParaBuscar) {
 		status.grind.value = grind.hero.max
 		status.grind.raridade = 'hero'
 	}
+		*/
 }
+
+console.log('Status para buscar:', statusParaBuscar)
