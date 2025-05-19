@@ -96,5 +96,30 @@ let statusFaltantes = {
 	acc: Math.ceil(Math.max(statusDesejado.acc - statusFixos.acc, 0)),
 }
 
+
+// ---- mapeia as possibilidades de status por cada runa
 let possibilidades = checkPossibleStatusPerRune(runas)
-console.log(possibilidades)
+
+let mapPossibilidades = []
+for (p in possibilidades) {
+	temp = possibilidades[p]
+	for (t in temp) {
+		let key = temp[t]
+		if (mapPossibilidades[key] == undefined)
+			mapPossibilidades[key] = 0
+
+		mapPossibilidades[key]++
+	}
+}
+
+
+let statusParaBuscar = {
+	hp: Math.ceil(statusFaltantes.hp * 100 / statusBase.hp / mapPossibilidades['hp']),
+	atk: Math.ceil(statusFaltantes.atk * 100 / statusBase.atk / mapPossibilidades['atk']),
+	def: Math.ceil(statusFaltantes.def * 100 / statusBase.def / mapPossibilidades['def']),
+	spd: Math.ceil(statusFaltantes.spd / mapPossibilidades['spd']),
+	cr: Math.ceil(statusFaltantes.cr / mapPossibilidades['cr']),
+	cd: Math.ceil(statusFaltantes.cd / mapPossibilidades['cd']),
+	res: Math.ceil(statusFaltantes.res / mapPossibilidades['res']),
+	acc: Math.ceil(statusFaltantes.acc / mapPossibilidades['acc']),
+}
