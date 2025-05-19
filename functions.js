@@ -15,23 +15,23 @@ function getArtStats(artifacts) {
 	}
 
 	for (a in artifacts) {
-		let artifact = artifacts[a];
-		let stat = artifact.stat;
+		let artifact = artifacts[a]
+		let stat = artifact.stat
 
-		stats[stat].value += getMaxArtStatValue(stat);
+		stats[stat].value += getMaxArtStatValue(stat)
 	}
 
-	return stats;
+	return stats
 }
 
 function getMaxArtStatValue(stat) {
 	switch (stat) {
 		case 'hp':
-			return 1500;
+			return 1500
 
 		case 'atk':
 		case 'def':
-			return 100;
+			return 100
 	}
 }
 
@@ -45,69 +45,69 @@ function getSetsStats(sets) {
 		cd: 0,
 		res: 0,
 		acc: 0
-	};
+	}
 
 	for (s in sets) {
-		let set = sets[s];
+		let set = sets[s]
 		switch (set) {
 			case 'energy':
-				stats.hp = 15;
-				break;
+				stats.hp = 15
+				break
 
 			case 'fatal':
-				stats.atk = 35;
-				break;
+				stats.atk = 35
+				break
 
 			case 'guard':
-				stats.def = 15;
-				break;
+				stats.def = 15
+				break
 
 			case 'swift':
-				stats.spd = 25;
-				break;
+				stats.spd = 25
+				break
 
 			case 'blade':
-				stats.cr = 12;
-				break;
+				stats.cr = 12
+				break
 
 			case 'rage':
-				stats.cd = 40;
-				break;
+				stats.cd = 40
+				break
 
 			case 'endure':
-				stats.res = 20;
-				break;
+				stats.res = 20
+				break
 
 			case 'focus':
-				stats.acc = 20;
-				break;
+				stats.acc = 20
+				break
 		}
 	}
 
-	return stats;
+	return stats
 }
 
 function getMaxStatusRuna(runa, flat = true) {
 	switch (runa) {
 		case 'hp':
-			return flat ? 2448 : 63;
+			return flat ? 2448 : 63
 
 		case 'atk':
 		case 'def':
-			return flat ? 160 : 63;
+			return flat ? 160 : 63
 
 		case 'spd':
-			return 42;
+			return 42
 
 		case 'cr':
-			return 58;
+			return 58
 
 		case 'cd':
-			return 80;
+			return 80
 
 		case 'res':
 		case 'acc':
-			return 64;
+			return 64
 	}
 }
 
@@ -136,11 +136,44 @@ function getRunesStats(runas) {
 		}
 		stats[runa.stat] += temp
 	}
-	return stats;
+	return stats
 }
 
-function checkPossibleStatusPerRune(runes) {
-	let stats = ['hp', 'atk', 'def', 'spd', 'cr', 'cd', 'res', 'acc'];
+function checkPossibleStatusPerRune(runas) {
+	let stats = [
+		{
+			stat: 'hp',
+			flat: false
+		},
+		{
+			stat: 'atk',
+			flat: false
+		},
+		{
+			stat: 'def',
+			flat: false
+		},
+		{
+			stat: 'spd',
+			flat: true
+		},
+		{
+			stat: 'cr',
+			flat: true
+		},
+		{
+			stat: 'cd',
+			flat: true
+		},
+		{
+			stat: 'res',
+			flat: true
+		},
+		{
+			stat: 'acc',
+			flat: true
+		}
+	]
 
 	let possibilities = {
 		1: [],
@@ -151,11 +184,17 @@ function checkPossibleStatusPerRune(runes) {
 		6: []
 	}
 
-	for (p in possibilities) {
+	for (r in runas.slots) {
 		for (s in stats) {
-			
+			let stat = stats[s]
+			let runa = runas.slots[r]
+
+			if (r == 1 && stat.stat == 'def' || r == 3 && stat.stat == 'atk') continue
+			if (stat.stat == runa.stat && runa.flat == stat.flat) continue
+
+			possibilities[r].push(stat.stat)
 		}
 	}
 
-	return possibilities;
+	return possibilities
 }
