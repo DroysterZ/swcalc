@@ -1,103 +1,105 @@
 /* Reset e base */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
 * {
-	box-sizing: border-box;
-	font-family: 'EB Garamond', sans-serif;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  font-family: 'EB Garamond', serif;
+  margin: 0;
+  padding: 0;
 }
 
-
 body {
-	background-color: #121212;
-	color: #f0f0f0;
-	padding: 20px;
+  background-color: #241a15;
+  color: #e4d2b0;
+  padding: 20px;
 }
 
 .container {
-	max-width: 800px;
-	margin: auto;
-	padding: 30px;
-	background-color: #1e1e1e;
-	border-radius: 10px;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  background-color: #3b2c25;
+  border-radius: 12px;
+  border: 2px solid #5c3b29;
+  box-shadow: 0 0 15px rgba(92, 59, 41, 0.3);
 }
 
+/* Títulos de seção */
 span {
-	display: block;
-	font-size: 1.2rem;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	font-weight: bold;
-	color: #00bcd4;
+  display: block;
+  font-size: 1.3rem;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #8c5e3c;
 }
 
-/* Layout dos grupos de inputs */
-.bstats,
-.dstats,
-.runes,
-.sets,
-.artifacts {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-	gap: 10px;
+/* Grupos de input */
+.bstats, .dstats, .runes, .sets, .artifacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
 }
 
 label {
-	margin-top: 10px;
-	font-size: 0.9rem;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #e4d2b0;
 }
 
-input[type="number"],
-select {
-	width: 100%;
-	padding: 6px 10px;
-	margin-top: 4px;
-	background-color: #2e2e2e;
-	color: #f0f0f0;
-	border: 1px solid #444;
-	border-radius: 4px;
+input[type="number"], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin-top: 4px;
+  background-color: #4d3a31;
+  color: #e4d2b0;
+  border: 1px solid #7a5c46;
+  border-radius: 4px;
+}
+
+input[type="number"]::placeholder {
+  color: #cbb79a;
 }
 
 button {
-	margin-top: 20px;
-	padding: 12px 20px;
-	background-color: #00bcd4;
-	color: #1e1e1e;
-	border: none;
-	border-radius: 6px;
-	font-weight: bold;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #8c5e3c;
+  color: #f3e5c0;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-	background-color: #0097a7;
+  background-color: #6d4730;
 }
 
-/* Área das runas */
+/* Final runes */
 .finalRunes {
-	margin-top: 30px;
-	display: grid;
-	gap: 20px;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	padding: 10px;
+  margin-top: 30px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 10px;
 }
 
-/* Bloco da runa com visual mágico */
+/* Blocos individuais de runas */
 .finalRunes .r1,
 .finalRunes .r2,
 .finalRunes .r3,
 .finalRunes .r4,
 .finalRunes .r5,
 .finalRunes .r6 {
-	background: linear-gradient(145deg, #2e2a3c, #1b1925);
-	border: 2px solid #5c4cb0;
-	border-radius: 12px;
-	padding: 18px;
-	box-shadow: 0 0 12px rgba(92, 76, 176, 0.5);
-	transition: transform 0.2s, box-shadow 0.3s;
-	position: relative;
+  background-color: #4d3a31;
+  border: 2px solid #8c5e3c;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 0 10px rgba(140, 94, 60, 0.2);
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
 .finalRunes .r1:hover,
@@ -106,39 +108,36 @@ button:hover {
 .finalRunes .r4:hover,
 .finalRunes .r5:hover,
 .finalRunes .r6:hover {
-	transform: scale(1.03);
-	box-shadow: 0 0 16px rgba(138, 115, 255, 0.7);
+  transform: scale(1.03);
+  box-shadow: 0 0 16px rgba(140, 94, 60, 0.4);
 }
 
 .finalRunes h3 {
-	margin-bottom: 10px;
-	font-size: 1.15rem;
-	color: #f1d76a;
-	text-shadow: 0 0 5px rgba(255, 255, 180, 0.3);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #e4d2b0;
 }
 
-/* Subatributos com ícones e brilho */
 .finalRunes p {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	font-size: 0.95rem;
-	color: #e0e0e0;
-	padding: 3px 0;
-	line-height: 1.4;
-	text-shadow: 0 0 2px #000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #e4d2b0;
+  padding: 3px 0;
+  line-height: 1.4;
 }
 
 .finalRunes img.gem,
 .finalRunes img.grind {
-	width: 18px;
-	height: 18px;
-	filter: drop-shadow(0 0 2px #fff);
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 0 1px #f5e3cc);
 }
 
 .finalRunes hr {
-	margin-top: 10px;
-	border: 0;
-	height: 1px;
-	background: linear-gradient(to right, transparent, #5c4cb0, transparent);
+  margin-top: 10px;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8c5e3c, transparent);
 }
