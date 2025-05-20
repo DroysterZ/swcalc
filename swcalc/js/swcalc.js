@@ -220,7 +220,6 @@ function calcularRunas() {
 
 	// TODO: verificar dinamicamente as gemas e grinds
 	// incluir rare e legend com seus valores min e max
-	debugger
 	for (s in statusParaBuscar) {
 		let status = statusParaBuscar[s]
 		if (status.value == 0) continue
