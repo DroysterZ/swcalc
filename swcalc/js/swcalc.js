@@ -73,10 +73,10 @@ function calcularRunas() {
 
 	let artefatos = {
 		1: {
-			stat: 'hp'
+			stat: document.getElementById('art1').value
 		},
 		2: {
-			stat: 'hp'
+			stat: document.getElementById('art2').value
 		}
 	}
 

@@ -5,7 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SWCALC</title>
-	
+
+	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" href="swcalc/css/style.css">
 </head>
 
@@ -14,19 +16,19 @@
 		<span>BASE</span>
 		<div class="bstats">
 			<label for="bhp">HP</label>
-			<input type="number" name="bhp" id="bhp" value="0">
+			<input type="number" name="bhp" id="bhp" value="10000">
 			<label for="batk">ATK</label>
-			<input type="number" name="batk" id="batk" value="0">
+			<input type="number" name="batk" id="batk" value="700">
 			<label for="bdef">DEF</label>
-			<input type="number" name="bdef" id="bdef" value="0">
+			<input type="number" name="bdef" id="bdef" value="700">
 			<label for="bspd">SPD</label>
-			<input type="number" name="bspd" id="bspd" value="0">
+			<input type="number" name="bspd" id="bspd" value="100">
 			<label for="bcr">C.R.%</label>
-			<input type="number" name="bcr" id="bcr" value="0">
+			<input type="number" name="bcr" id="bcr" value="15">
 			<label for="bcd">C.D.%</label>
-			<input type="number" name="bcd" id="bcd" value="0">
+			<input type="number" name="bcd" id="bcd" value="50">
 			<label for="bres">RES%</label>
-			<input type="number" name="bres" id="bres" value="0">
+			<input type="number" name="bres" id="bres" value="15">
 			<label for="bacc">ACC%</label>
 			<input type="number" name="bacc" id="bacc" value="0">
 		</div>
@@ -152,6 +154,21 @@
 				<option value="vampire">Vampire</option>
 				<option value="violent">Violent</option>
 				<option value="will">Will</option>
+			</select>
+		</div>
+
+		<br>
+		<span>ARTIFACTS</span>
+		<div class="artifacts">
+			<select name="art1" id="art1">
+				<option value="hp">HP</option>
+				<option value="atk">ATK</option>
+				<option value="def">DEF</option>
+			</select>
+			<select name="art2" id="art2">
+				<option value="hp">HP</option>
+				<option value="atk">ATK</option>
+				<option value="def">DEF</option>
 			</select>
 		</div>
 
