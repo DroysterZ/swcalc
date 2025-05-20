@@ -27,11 +27,22 @@ function calcularRunas() {
 	// runas e artefatos selecionados
 	// TODO: runas pares e artefatos devem ser selecionaveis
 
+	let sets = Array.from(document.querySelector('.sets').querySelectorAll('select')).map(select => select.value)
+	let sets4runes = [
+		'fatal',
+		'swift',
+		'vampire',
+		'despair',
+		'violent',
+		'rage'
+	]
+
+	if (sets4runes.includes(sets[0]) || sets4runes.includes(sets[1])) {
+		sets.pop()
+	}
+
 	let runas = {
-		sets: [
-			'violent',
-			'will',
-		],
+		sets: sets,
 		slots: {
 			1: {
 				stat: 'atk',
