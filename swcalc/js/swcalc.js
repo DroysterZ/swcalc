@@ -3,25 +3,25 @@ function calcularRunas() {
 
 	// status base e status desejado
 	let statusBase = {
-		hp: document.getElementById('bhp').value,
-		atk: document.getElementById('batk').value,
-		def: document.getElementById('bdef').value,
-		spd: document.getElementById('bspd').value,
-		cr: document.getElementById('bcr').value,
-		cd: document.getElementById('bcd').value,
-		res: document.getElementById('bres').value,
-		acc: document.getElementById('bacc').value
+		hp: document.getElementById('bhp').value * 1,
+		atk: document.getElementById('batk').value * 1,
+		def: document.getElementById('bdef').value * 1,
+		spd: document.getElementById('bspd').value * 1,
+		cr: document.getElementById('bcr').value * 1,
+		cd: document.getElementById('bcd').value * 1,
+		res: document.getElementById('bres').value * 1,
+		acc: document.getElementById('bacc').value * 1,
 	}
 
 	let statusDesejado = {
-		hp: document.getElementById('dhp').value,
-		atk: document.getElementById('datk').value,
-		def: document.getElementById('ddef').value,
-		spd: document.getElementById('dspd').value,
-		cr: document.getElementById('dcr').value,
-		cd: document.getElementById('dcd').value,
-		res: document.getElementById('dres').value,
-		acc: document.getElementById('dacc').value
+		hp: document.getElementById('dhp').value * 1,
+		atk: document.getElementById('datk').value * 1,
+		def: document.getElementById('ddef').value * 1,
+		spd: document.getElementById('dspd').value * 1,
+		cr: document.getElementById('dcr').value * 1,
+		cd: document.getElementById('dcd').value * 1,
+		res: document.getElementById('dres').value * 1,
+		acc: document.getElementById('dacc').value * 1,
 	}
 
 	// runas e artefatos selecionados
