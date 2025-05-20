@@ -1,26 +1,27 @@
 function calcularRunas() {
+	document.getElementsByClassName('finalRunes')[0].innerHTML = ''
 
 	// status base e status desejado
 	let statusBase = {
-		hp: 9885,
-		atk: 648,
-		def: 834,
-		spd: 101,
-		cr: 15,
-		cd: 50,
-		res: 15,
-		acc: 0
+		hp: document.getElementById('bhp').value,
+		atk: document.getElementById('batk').value,
+		def: document.getElementById('bdef').value,
+		spd: document.getElementById('bspd').value,
+		cr: document.getElementById('bcr').value,
+		cd: document.getElementById('bcd').value,
+		res: document.getElementById('bres').value,
+		acc: document.getElementById('bacc').value
 	}
 
 	let statusDesejado = {
-		hp: 20700,
-		atk: 0,
-		def: 1000,
-		spd: 180,
-		cr: 0,
-		cd: 0,
-		res: 100,
-		acc: 0
+		hp: document.getElementById('dhp').value,
+		atk: document.getElementById('datk').value,
+		def: document.getElementById('ddef').value,
+		spd: document.getElementById('dspd').value,
+		cr: document.getElementById('dcr').value,
+		cd: document.getElementById('dcd').value,
+		res: document.getElementById('dres').value,
+		acc: document.getElementById('dacc').value
 	}
 
 	// runas e artefatos selecionados
@@ -37,24 +38,24 @@ function calcularRunas() {
 				flat: true
 			},
 			2: {
-				stat: document.getElementById('rune2-attr').value,
-				flat: ['hp', 'atk', 'def'].includes(document.getElementById('rune2-attr').value) ? false : true
+				stat: document.getElementById('r2attr').value,
+				flat: !['hp', 'atk', 'def'].includes(document.getElementById('r2attr').value)
 			},
 			3: {
 				stat: 'def',
 				flat: true
 			},
 			4: {
-				stat: document.getElementById('rune4-attr').value,
-				flat: ['hp', 'atk', 'def'].includes(document.getElementById('rune4-attr').value) ? false : true
+				stat: document.getElementById('r4attr').value,
+				flat: !['hp', 'atk', 'def'].includes(document.getElementById('r4attr').value)
 			},
 			5: {
 				stat: 'hp',
 				flat: true
 			},
 			6: {
-				stat: document.getElementById('rune6-attr').value,
-				flat: ['hp', 'atk', 'def'].includes(document.getElementById('rune6-attr').value) ? false : true
+				stat: document.getElementById('r6attr').value,
+				flat: !['hp', 'atk', 'def'].includes(document.getElementById('r6attr').value)
 			}
 		}
 	}
@@ -273,5 +274,35 @@ function calcularRunas() {
 		}
 	}
 
-	console.log(runasFinais)
+	for (r in runasFinais) {
+		let runa = runasFinais[r]
+		let elemRuna = document.createElement('div')
+		elemRuna.classList.add('r' + r)
+		document.getElementsByClassName('finalRunes')[0].appendChild(elemRuna)
+
+		for (s in runa) {
+			let status = runa[s]
+			let elemSub = document.createElement('p')
+			elemSub.classList.add('sub' + (s * 1 + 1))
+			elemSub.textContent = status.atributo + ': ' + status.value
+			document.getElementsByClassName('r' + r)[0].appendChild(elemSub)
+
+			if (status.gem.value > 0) {
+				let img = document.createElement('img')
+				img.src = 'swcalc/img/gem_' + status.gem.raridade + '.png'
+				img.alt = status.gem.raridade + ' gem'
+				img.classList.add('gem')
+				elemSub.appendChild(img)
+			}
+			if (status.grind.value > 0) {
+				let img = document.createElement('img')
+				img.src = 'swcalc/img/grind_' + status.grind.raridade + '.png'
+				img.alt = status.grind.raridade + ' grind'
+				img.classList.add('grind')
+				elemSub.appendChild(img)
+			}
+
+		}
+		elemRuna.innerHTML += '<hr>'
+	}
 }
