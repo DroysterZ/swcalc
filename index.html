@@ -11,24 +11,42 @@
 
 <body>
 	<div class="container">
+		<span>BASE</span>
 		<div class="bstats">
+			<label for="bhp">HP</label>
 			<input type="number" name="bhp" id="bhp" value="0">
+			<label for="batk">ATK</label>
 			<input type="number" name="batk" id="batk" value="0">
+			<label for="bdef">DEF</label>
 			<input type="number" name="bdef" id="bdef" value="0">
+			<label for="bspd">SPD</label>
 			<input type="number" name="bspd" id="bspd" value="0">
+			<label for="bcr">C.R.%</label>
 			<input type="number" name="bcr" id="bcr" value="0">
+			<label for="bcd">C.D.%</label>
 			<input type="number" name="bcd" id="bcd" value="0">
+			<label for="bres">RES%</label>
 			<input type="number" name="bres" id="bres" value="0">
+			<label for="bacc">ACC%</label>
 			<input type="number" name="bacc" id="bacc" value="0">
 		</div>
+		<span>TARGET</span>
 		<div class="dstats">
+			<label for="dhp">HP</label>
 			<input type="number" name="dhp" id="dhp" value="0">
+			<label for="datk">ATK</label>
 			<input type="number" name="datk" id="datk" value="0">
+			<label for="ddef">DEF</label>
 			<input type="number" name="ddef" id="ddef" value="0">
+			<label for="dspd">SPD</label>
 			<input type="number" name="dspd" id="dspd" value="0">
+			<label for="dcr">C.R.%</label>
 			<input type="number" name="dcr" id="dcr" value="0">
+			<label for="dcd">C.D.%</label>
 			<input type="number" name="dcd" id="dcd" value="0">
+			<label for="dres">RES%</label>
 			<input type="number" name="dres" id="dres" value="0">
+			<label for="dacc">ACC%</label>
 			<input type="number" name="dacc" id="dacc" value="0">
 		</div>
 		<div class="runes">
@@ -37,34 +55,24 @@
 				<option value="atk">ATK%</option>
 				<option value="def">DEF%</option>
 				<option value="spd">SPD</option>
-				<option value="cr">C.R.%</option>
-				<option value="cd">C.D.%</option>
-				<option value="res">RES%</option>
-				<option value="acc">ACC%</option>
 			</select>
 			<select name="r4attr" id="r4attr">
 				<option value="hp">HP%</option>
 				<option value="atk">ATK%</option>
 				<option value="def">DEF%</option>
-				<option value="spd">SPD</option>
 				<option value="cr">C.R.%</option>
 				<option value="cd">C.D.%</option>
-				<option value="res">RES%</option>
-				<option value="acc">ACC%</option>
 			</select>
 			<select name="r6attr" id="r6attr">
 				<option value="hp">HP%</option>
 				<option value="atk">ATK%</option>
 				<option value="def">DEF%</option>
-				<option value="spd">SPD</option>
-				<option value="cr">C.R.%</option>
-				<option value="cd">C.D.%</option>
 				<option value="res">RES%</option>
 				<option value="acc">ACC%</option>
 			</select>
 
-			<button onclick="calcularRunas()">CALCULAR</button>
 		</div>
+		<button onclick="calcularRunas()">CALCULAR</button>
 
 		<div class="finalRunes">
 		</div>

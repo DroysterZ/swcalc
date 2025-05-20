@@ -279,7 +279,7 @@ function calcularRunas() {
 		let elemRuna = document.createElement('div')
 		elemRuna.classList.add('r' + r)
 		document.getElementsByClassName('finalRunes')[0].appendChild(elemRuna)
-
+		elemRuna.innerHTML = '<h3>Runa ' + r + '</h3>' + elemRuna.innerHTML
 		for (s in runa) {
 			let status = runa[s]
 			let elemSub = document.createElement('p')
