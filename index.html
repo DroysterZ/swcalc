@@ -6,53 +6,67 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SWCALC</title>
 
-	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-
 	<link rel="stylesheet" href="swcalc/css/style.css">
 </head>
 
 <body>
 	<div class="container">
-		<span>BASE</span>
-		<div class="bstats">
-			<label for="bhp">HP</label>
-			<input type="number" name="bhp" id="bhp" value="10000">
-			<label for="batk">ATK</label>
-			<input type="number" name="batk" id="batk" value="700">
-			<label for="bdef">DEF</label>
-			<input type="number" name="bdef" id="bdef" value="700">
-			<label for="bspd">SPD</label>
-			<input type="number" name="bspd" id="bspd" value="100">
-			<label for="bcr">C.R.%</label>
-			<input type="number" name="bcr" id="bcr" value="15">
-			<label for="bcd">C.D.%</label>
-			<input type="number" name="bcd" id="bcd" value="50">
-			<label for="bres">RES%</label>
-			<input type="number" name="bres" id="bres" value="15">
-			<label for="bacc">ACC%</label>
-			<input type="number" name="bacc" id="bacc" value="0">
+		<div class="stat-table">
+			<div class="header-row">
+				<div></div>
+				<div>BASE</div>
+				<div>TARGET</div>
+			</div>
+
+			<div class="stat-row">
+				<label for="bhp">HP</label>
+				<input type="number" name="bhp" id="bhp" value="10000">
+				<input type="number" name="dhp" id="dhp" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="batk">ATK</label>
+				<input type="number" name="batk" id="batk" value="700">
+				<input type="number" name="datk" id="datk" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="bdef">DEF</label>
+				<input type="number" name="bdef" id="bdef" value="700">
+				<input type="number" name="ddef" id="ddef" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="bspd">SPD</label>
+				<input type="number" name="bspd" id="bspd" value="100">
+				<input type="number" name="dspd" id="dspd" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="bcr">C.R.%</label>
+				<input type="number" name="bcr" id="bcr" value="15">
+				<input type="number" name="dcr" id="dcr" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="bcd">C.D.%</label>
+				<input type="number" name="bcd" id="bcd" value="50">
+				<input type="number" name="dcd" id="dcd" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="bres">RES%</label>
+				<input type="number" name="bres" id="bres" value="15">
+				<input type="number" name="dres" id="dres" value="0">
+			</div>
+
+			<div class="stat-row">
+				<label for="bacc">ACC%</label>
+				<input type="number" name="bacc" id="bacc" value="0">
+				<input type="number" name="dacc" id="dacc" value="0">
+			</div>
 		</div>
 
-		<br>
-		<span>TARGET</span>
-		<div class="dstats">
-			<label for="dhp">HP</label>
-			<input type="number" name="dhp" id="dhp" value="0">
-			<label for="datk">ATK</label>
-			<input type="number" name="datk" id="datk" value="0">
-			<label for="ddef">DEF</label>
-			<input type="number" name="ddef" id="ddef" value="0">
-			<label for="dspd">SPD</label>
-			<input type="number" name="dspd" id="dspd" value="0">
-			<label for="dcr">C.R.%</label>
-			<input type="number" name="dcr" id="dcr" value="0">
-			<label for="dcd">C.D.%</label>
-			<input type="number" name="dcd" id="dcd" value="0">
-			<label for="dres">RES%</label>
-			<input type="number" name="dres" id="dres" value="0">
-			<label for="dacc">ACC%</label>
-			<input type="number" name="dacc" id="dacc" value="0">
-		</div>
 
 		<br>
 		<span>RUNES</span>
