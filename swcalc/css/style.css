@@ -259,3 +259,12 @@ button:hover {
 	background: linear-gradient(to right, transparent, #5c3b29, transparent);
 	margin: 20px 0;
 }
+
+@media only screen and (max-width: 640px) {
+	.gear-wrapper {
+		display: block;
+	}
+	.gear-wrapper>div {
+		margin-top: 20px;
+	}
+}
