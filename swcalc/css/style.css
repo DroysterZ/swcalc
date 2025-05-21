@@ -119,7 +119,7 @@ button:hover {
 
 .finalRunes h3 {
 	margin-bottom: 10px;
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 	color: #e4d2b0;
 }
 
@@ -127,10 +127,31 @@ button:hover {
 	display: flex;
 	align-items: center;
 	gap: 6px;
-	font-size: 0.95rem;
+	font-size: 1rem;
 	color: #e4d2b0;
 	padding: 3px 0;
 	line-height: 1.4;
+}
+
+.finalRunes div[class^="sub"] {
+	margin-top: 5px;
+}
+
+.finalRunes div[class^="sub"] div {
+	margin-bottom: 5px;
+}
+
+.finalRunes div[class^="sub"] div p {
+	font-size: .85rem;
+	padding: 0;
+}
+
+.finalRunes div[class^="r"] div div {
+	display: none;
+}
+
+.finalRunes div[class^="r"]:hover div div {
+	display: block;
 }
 
 .finalRunes img.gem,

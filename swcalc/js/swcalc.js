@@ -285,15 +285,31 @@ function calcularRunas() {
 		}
 	}
 
+	/*
+	<div class="r1">
+		<h3>Runa 1</h3>
+		<hr>
+		<div class="sub1">
+			<p><b>hp: 19</b></p>
+			<div>
+				<p>8 + 8 + 3</p>
+			</div>
+		</div>
+		<hr>
+		<div class="sub2">
+			<p>atk: 13<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem"><img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind"></p>
+		</div>
+	</div>
+	*/
 	for (r in runasFinais) {
 		let runa = runasFinais[r]
 		let elemRuna = document.createElement('div')
 		elemRuna.classList.add('r' + r)
 		document.getElementsByClassName('finalRunes')[0].appendChild(elemRuna)
-		elemRuna.innerHTML = '<h3>Runa ' + r + '</h3>' + elemRuna.innerHTML
+		elemRuna.innerHTML = '<hr><h3>Runa ' + r + '</h3>' + elemRuna.innerHTML
 		for (s in runa) {
 			let status = runa[s]
-			let elemSub = document.createElement('p')
+			let elemSub = document.createElement('div')
 			elemSub.classList.add('sub' + (s * 1 + 1))
 			elemSub.textContent = status.atributo + ': ' + status.value
 			document.getElementsByClassName('r' + r)[0].appendChild(elemSub)
