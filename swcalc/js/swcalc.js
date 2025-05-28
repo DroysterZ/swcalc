@@ -154,53 +154,6 @@ function calcularRunas() {
 		},
 	}
 
-	// TODO: verificar dinamicamente as gemas e grinds
-	// incluir rare e legend com seus valores min e max
-	/*
-		for (s in statusParaBuscar) {
-			let status = statusParaBuscar[s]
-			if (status.value == 0) continue
-
-			let gem = getGemstoneStatus(s)
-			let grind = getGrindstoneStatus(s)
-
-			let raridades = ['rare', 'hero']
-
-			for (r of raridades) {
-				for (let i = gem[r].min; i <= gem[r].max; i++) {
-					if (status.value <= i) {
-						status.gem.value = i
-						status.gem.raridade = r
-						break
-					}
-				}
-				if (status.gem.value > 0) break
-			}
-
-			if (status.gem.value > 0 || grind == undefined) continue
-
-			for (r of raridades) {
-				for (let i = gem[r].min; i <= gem[r].max; i++) {
-					for (rg of raridades) {
-						for (let j = grind[rg].min; j <= grind[rg].max; j++) {
-							if (status.value <= i + j) {
-								status.gem.value = i
-								status.gem.raridade = r
-
-								status.grind.value = j
-								status.grind.raridade = rg
-								break
-							}
-						}
-						if (status.grind.value > 0) break
-					}
-					if (status.grind.value > 0) break
-				}
-				if (status.grind.value > 0) break
-			}
-		}
-	*/
-
 	let runasFinais = {
 		1: [],
 		2: [],
@@ -223,22 +176,6 @@ function calcularRunas() {
 		}
 	}
 
-	/*
-	<div class="r1">
-		<h3>Runa 1</h3>
-		<hr>
-		<div class="sub1">
-			<p><b>hp: 19</b></p>
-			<div>
-				<p>8 + 8 + 3</p>
-			</div>
-		</div>
-		<hr>
-		<div class="sub2">
-			<p>atk: 13<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem"><img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind"></p>
-		</div>
-	</div>
-	*/
 	for (r in runasFinais) {
 		let runa = runasFinais[r]
 		let elemRuna = document.createElement('div')
@@ -251,7 +188,10 @@ function calcularRunas() {
 		for (s in runa) {
 			let status = runa[s]
 			let ups = []
-			ups.push(getUpsSubstats(status.value, status.atributo))
+
+			temp = getUpsSubstats(status.value, status.atributo)
+			if (temp.length > 5) temp = [0]
+			ups.push()
 
 			let gem = getGemstoneStatus(status.atributo)
 			let grind = getGrindstoneStatus(status.atributo)
@@ -282,7 +222,7 @@ function calcularRunas() {
 					temp = [0]
 					if (tempGem + tempGrind > status.value) {
 						let control = 0;
-						while (tempGem + tempGrind > status.value) {
+						while (tempGem + tempGrind > status.value && (tempGem > gem[rgem].min || tempGrind > grind[rgrind].min)) {
 							if (control == 0) {
 								tempGem = tempGem > gem[rgem].min ? tempGem - 1 : tempGem
 								control = 1
@@ -412,27 +352,6 @@ function calcularRunas() {
 			div += '</div>'
 
 			elemRuna.innerHTML += div
-
-			// let elemSub = document.createElement('div')
-			// elemSub.classList.add('sub' + (s * 1 + 1))
-			// elemSub.textContent = status.atributo + ': ' + status.value
-			// document.getElementsByClassName('r' + r)[0].appendChild(elemSub)
-
-			// if (status.gem.value > 0) {
-			// 	let img = document.createElement('img')
-			// 	img.src = 'swcalc/img/gem_' + status.gem.raridade + '.png'
-			// 	img.alt = status.gem.raridade + ' gem'
-			// 	img.classList.add('gem')
-			// 	elemSub.appendChild(img)
-			// }
-			// if (status.grind.value > 0) {
-			// 	let img = document.createElement('img')
-			// 	img.src = 'swcalc/img/grind_' + status.grind.raridade + '.png'
-			// 	img.alt = status.grind.raridade + ' grind'
-			// 	img.classList.add('grind')
-			// 	elemSub.appendChild(img)
-			// }
-
 		}
 		elemRuna.innerHTML += '<hr>'
 	}
