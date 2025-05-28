@@ -222,7 +222,7 @@ function calcularRunas() {
 					temp = [0]
 					if (tempGem + tempGrind > status.value) {
 						let control = 0;
-						while (tempGem + tempGrind > status.value) {
+						while (tempGem + tempGrind > status.value && (tempGem > gem[rgem].min || tempGrind > grind[rgrind].min)) {
 							if (control == 0) {
 								tempGem = tempGem > gem[rgem].min ? tempGem - 1 : tempGem
 								control = 1
