@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SWCALC</title>
 
-	<link rel="stylesheet" href="swcalc/css/style.min.css">
+	<link rel="stylesheet" href="swcalc/css/style.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 			<div class="stat-row">
 				<label for="bhp">HP</label>
 				<input type="number" name="bhp" id="bhp" step="500" min="0" value="10000">
-				<input type="number" name="dhp" id="dhp" step="500" min="0" value="0">
+				<input type="number" name="dhp" id="dhp" step="500" min="0" value="30000">
 			</div>
 
 			<div class="stat-row">
@@ -44,8 +44,8 @@
 
 			<div class="stat-row">
 				<label for="bcr">C.R.%</label>
-				<input type="number" name="bcr" id="bcr" step="5" min="0" , max="100" value="15">
-				<input type="number" name="dcr" id="dcr" step="5" min="0" , max="100" value="0">
+				<input type="number" name="bcr" id="bcr" step="5" min="0" max="100" value="15">
+				<input type="number" name="dcr" id="dcr" step="5" min="0" max="100" value="0">
 			</div>
 
 			<div class="stat-row">
@@ -56,14 +56,14 @@
 
 			<div class="stat-row">
 				<label for="bres">RES%</label>
-				<input type="number" name="bres" id="bres" step="5" min="0" , max="100" value="15">
-				<input type="number" name="dres" id="dres" step="5" min="0" , max="100" value="0">
+				<input type="number" name="bres" id="bres" step="5" min="0" max="100" value="15">
+				<input type="number" name="dres" id="dres" step="5" min="0" max="100" value="0">
 			</div>
 
 			<div class="stat-row">
 				<label for="bacc">ACC%</label>
-				<input type="number" name="bacc" id="bacc" step="5" min="0" , max="100" value="0">
-				<input type="number" name="dacc" id="dacc" step="5" min="0" , max="100" value="0">
+				<input type="number" name="bacc" id="bacc" step="5" min="0" max="100" value="0">
+				<input type="number" name="dacc" id="dacc" step="5" min="0" max="100" value="0">
 			</div>
 		</div>
 
@@ -196,8 +196,9 @@
 		<div class="finalRunes">
 		</div>
 	</div>
-	<script src="swcalc/js/functions.min.js"></script>
-	<script src="swcalc/js/swcalc.min.js"></script>
+	<script src="swcalc/js/functions.js"></script>
+	<script src="swcalc/js/swcalc.js"></script>
+	<script>calcularRunas()</script>
 </body>
 
 </html>

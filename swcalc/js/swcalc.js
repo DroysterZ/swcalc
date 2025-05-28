@@ -130,138 +130,76 @@ function calcularRunas() {
 	let statusParaBuscar = {
 		hp: {
 			value: Math.ceil(statusFaltantes.hp * 100 / statusBase.hp / mapPossibilidades['hp']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		atk: {
 			value: Math.ceil(statusFaltantes.atk * 100 / statusBase.atk / mapPossibilidades['atk']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		def: {
 			value: Math.ceil(statusFaltantes.def * 100 / statusBase.def / mapPossibilidades['def']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		spd: {
 			value: Math.ceil(statusFaltantes.spd / mapPossibilidades['spd']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		cr: {
 			value: Math.ceil(statusFaltantes.cr / mapPossibilidades['cr']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		cd: {
 			value: Math.ceil(statusFaltantes.cd / mapPossibilidades['cd']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		res: {
 			value: Math.ceil(statusFaltantes.res / mapPossibilidades['res']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 		acc: {
 			value: Math.ceil(statusFaltantes.acc / mapPossibilidades['acc']),
-			gem: {
-				value: 0,
-				raridade: ''
-			},
-			grind: {
-				value: 0,
-				raridade: ''
-			}
 		},
 	}
 
 	// TODO: verificar dinamicamente as gemas e grinds
 	// incluir rare e legend com seus valores min e max
-	for (s in statusParaBuscar) {
-		let status = statusParaBuscar[s]
-		if (status.value == 0) continue
+	/*
+		for (s in statusParaBuscar) {
+			let status = statusParaBuscar[s]
+			if (status.value == 0) continue
 
-		let gem = getGemstoneStatus(s)
-		let grind = getGrindstoneStatus(s)
+			let gem = getGemstoneStatus(s)
+			let grind = getGrindstoneStatus(s)
 
-		let raridades = ['rare', 'hero']
+			let raridades = ['rare', 'hero']
 
-		for (r of raridades) {
-			for (let i = gem[r].min; i <= gem[r].max; i++) {
-				if (status.value <= i) {
-					status.gem.value = i
-					status.gem.raridade = r
-					break
+			for (r of raridades) {
+				for (let i = gem[r].min; i <= gem[r].max; i++) {
+					if (status.value <= i) {
+						status.gem.value = i
+						status.gem.raridade = r
+						break
+					}
 				}
+				if (status.gem.value > 0) break
 			}
-			if (status.gem.value > 0) break
-		}
 
-		if (status.gem.value > 0 || grind == undefined) continue
+			if (status.gem.value > 0 || grind == undefined) continue
 
-		for (r of raridades) {
-			for (let i = gem[r].min; i <= gem[r].max; i++) {
-				for (rg of raridades) {
-					for (let j = grind[rg].min; j <= grind[rg].max; j++) {
-						if (status.value <= i + j) {
-							status.gem.value = i
-							status.gem.raridade = r
+			for (r of raridades) {
+				for (let i = gem[r].min; i <= gem[r].max; i++) {
+					for (rg of raridades) {
+						for (let j = grind[rg].min; j <= grind[rg].max; j++) {
+							if (status.value <= i + j) {
+								status.gem.value = i
+								status.gem.raridade = r
 
-							status.grind.value = j
-							status.grind.raridade = rg
-							break
+								status.grind.value = j
+								status.grind.raridade = rg
+								break
+							}
 						}
+						if (status.grind.value > 0) break
 					}
 					if (status.grind.value > 0) break
 				}
 				if (status.grind.value > 0) break
 			}
-			if (status.grind.value > 0) break
 		}
-	}
+	*/
 
 	let runasFinais = {
 		1: [],
@@ -285,33 +223,215 @@ function calcularRunas() {
 		}
 	}
 
+	/*
+	<div class="r1">
+		<h3>Runa 1</h3>
+		<hr>
+		<div class="sub1">
+			<p><b>hp: 19</b></p>
+			<div>
+				<p>8 + 8 + 3</p>
+			</div>
+		</div>
+		<hr>
+		<div class="sub2">
+			<p>atk: 13<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem"><img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind"></p>
+		</div>
+	</div>
+	*/
 	for (r in runasFinais) {
 		let runa = runasFinais[r]
 		let elemRuna = document.createElement('div')
 		elemRuna.classList.add('r' + r)
 		document.getElementsByClassName('finalRunes')[0].appendChild(elemRuna)
-		elemRuna.innerHTML = '<h3>Runa ' + r + '</h3>' + elemRuna.innerHTML
+		elemRuna.innerHTML = '<h3>Rune ' + r + '</h3>' + elemRuna.innerHTML
+
+		let rarity = ['rare', 'hero', 'legend']
+		let temp
 		for (s in runa) {
 			let status = runa[s]
-			let elemSub = document.createElement('p')
-			elemSub.classList.add('sub' + (s * 1 + 1))
-			elemSub.textContent = status.atributo + ': ' + status.value
-			document.getElementsByClassName('r' + r)[0].appendChild(elemSub)
+			let ups = []
+			ups.push(getUpsSubstats(status.value, status.atributo))
 
-			if (status.gem.value > 0) {
-				let img = document.createElement('img')
-				img.src = 'swcalc/img/gem_' + status.gem.raridade + '.png'
-				img.alt = status.gem.raridade + ' gem'
-				img.classList.add('gem')
-				elemSub.appendChild(img)
+			let gem = getGemstoneStatus(status.atributo)
+			let grind = getGrindstoneStatus(status.atributo)
+
+			for (r of rarity) {
+				temp = [0]
+				if (grind[r].max) {
+					temp = getUpsSubstats(status.value - grind[r].max, status.atributo)
+					temp.push(grind[r].max)
+
+					ups.push(temp)
+				}
 			}
-			if (status.grind.value > 0) {
-				let img = document.createElement('img')
-				img.src = 'swcalc/img/grind_' + status.grind.raridade + '.png'
-				img.alt = status.grind.raridade + ' grind'
-				img.classList.add('grind')
-				elemSub.appendChild(img)
+
+			for (r of rarity) {
+				temp = [0]
+				if (gem[r].max > status.value)
+					temp = [gem[r].min + gem[r].max - status.value]
+
+				ups.push(temp)
 			}
+
+			for (rgem of rarity) {
+				for (rgrind of rarity) {
+					let tempGem = gem[rgem].max
+					let tempGrind = grind[rgrind].max
+
+					temp = [0]
+					if (tempGem + tempGrind > status.value) {
+						let control = 0;
+						while (tempGem + tempGrind > status.value) {
+							if (control == 0) {
+								tempGem = tempGem > gem[rgem].min ? tempGem - 1 : tempGem
+								control = 1
+							} else {
+								tempGrind = tempGrind > grind[rgrind].min ? tempGrind - 1 : tempGrind
+								control = 0
+							}
+						}
+						temp = [tempGem, tempGrind]
+					}
+					ups.push(temp)
+
+				}
+			}
+
+			let div = ''
+			div += '<div class="sub' + (s * 1 + 1) + '">'
+			div += '	<p><b>' + status.atributo + ': ' + status.value + '</b></p>'
+			div += '	<div>'
+
+			for (u in ups) {
+				u *= 1
+				let possibility = ups[u]
+				if (possibility[0] == 0) continue
+
+				switch (u) {
+					case 0:
+						// ups
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 1:
+						// rare grind
+						div += '<p>' + possibility.join(' + ') + '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind"></p>'
+						break
+
+					case 2:
+						// hero grind
+						div += '<p>' + possibility.join(' + ') + '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind"></p>'
+						break
+
+					case 3:
+						// legend grind
+						div += '<p>' + possibility.join(' + ') + '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind"></p>'
+						break
+
+					case 4:
+						// rare gem
+						div += '<p>' + possibility.join(' + ') + '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem"></p>'
+						break
+
+					case 5:
+						// hero gem
+						div += '<p>' + possibility.join(' + ') + '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem"></p>'
+						break
+
+					case 6:
+						// legend gem
+						div += '<p>' + possibility.join(' + ') + '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem"></p>'
+						break
+
+					case 7:
+						// rare gem + rare grind
+						possibility[0] += '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 8:
+						// rare gem + hero grind
+						possibility[0] += '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 9:
+						// rare gem + legend grind
+						possibility[0] += '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 10:
+						// hero gem + rare grind
+						possibility[0] += '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 11:
+						// hero gem + hero grind
+						possibility[0] += '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 12:
+						// hero gem + legend grind
+						possibility[0] += '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 13:
+						// legend gem + rare grind
+						possibility[0] += '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 14:
+						// legend gem + hero grind
+						possibility[0] += '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+
+					case 15:
+						// legend gem + legend grind
+						possibility[0] += '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
+						break
+				}
+			}
+			div += '	</div>'
+			div += '</div>'
+
+			elemRuna.innerHTML += div
+
+			// let elemSub = document.createElement('div')
+			// elemSub.classList.add('sub' + (s * 1 + 1))
+			// elemSub.textContent = status.atributo + ': ' + status.value
+			// document.getElementsByClassName('r' + r)[0].appendChild(elemSub)
+
+			// if (status.gem.value > 0) {
+			// 	let img = document.createElement('img')
+			// 	img.src = 'swcalc/img/gem_' + status.gem.raridade + '.png'
+			// 	img.alt = status.gem.raridade + ' gem'
+			// 	img.classList.add('gem')
+			// 	elemSub.appendChild(img)
+			// }
+			// if (status.grind.value > 0) {
+			// 	let img = document.createElement('img')
+			// 	img.src = 'swcalc/img/grind_' + status.grind.raridade + '.png'
+			// 	img.alt = status.grind.raridade + ' grind'
+			// 	img.classList.add('grind')
+			// 	elemSub.appendChild(img)
+			// }
 
 		}
 		elemRuna.innerHTML += '<hr>'
