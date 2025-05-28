@@ -235,7 +235,20 @@ function getGrindstoneStatus(stat) {
 			}
 	}
 
-	return undefined;
+	return {
+		rare: {
+			min: 0,
+			max: 0
+		},
+		hero: {
+			min: 0,
+			max: 0
+		},
+		legend: {
+			min: 0,
+			max: 0
+		}
+	};
 }
 
 function getRunesStats(runas, base) {
@@ -324,4 +337,42 @@ function checkPossibleStatusPerRune(runas) {
 	}
 
 	return possibilities
+}
+
+function getRangeSubstats(stat) {
+	switch (stat) {
+		case 'hp':
+		case 'atk':
+		case 'def':
+		case 'acc':
+		case 'res':
+			return { min: 4, max: 8 }
+
+		case 'spd':
+		case 'cr':
+			return { min: 4, max: 6 }
+
+		case 'cd':
+			return { min: 4, max: 7 }
+	}
+}
+
+function getUpsSubstats(value, stat) {
+	let subRange = getRangeSubstats(stat)
+	let ups = []
+	let qtUps = Math.floor(value / subRange.max)
+	value = value % subRange.max
+	for (let i = 0; i < qtUps; i++) {
+		ups.push(subRange.max)
+	}
+
+	while (value > 0 && value < subRange.min) {
+		ups[ups.length - 1]--
+		value++
+	}
+
+	ups.push(value)
+	ups.sort()
+
+	return ups
 }
