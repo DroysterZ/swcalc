@@ -269,7 +269,7 @@ function calcularRunas() {
 			for (r of rarity) {
 				temp = [0]
 				if (gem[r].max > status.value)
-					temp = [gem.rare.min + gem.status.max - status.value]
+					temp = [gem[r].min + gem[r].max - status.value]
 
 				ups.push(temp)
 			}
@@ -346,38 +346,65 @@ function calcularRunas() {
 
 					case 7:
 						// rare gem + rare grind
+						possibility[0] += '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 8:
 						// rare gem + hero grind
+						possibility[0] += '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 9:
 						// rare gem + legend grind
+						possibility[0] += '<img src="swcalc/img/gem_rare.png" alt="rare gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 10:
 						// hero gem + rare grind
+						possibility[0] += '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 11:
 						// hero gem + hero grind
+						possibility[0] += '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 12:
 						// hero gem + legend grind
+						possibility[0] += '<img src="swcalc/img/gem_hero.png" alt="hero gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 13:
 						// legend gem + rare grind
+						possibility[0] += '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_rare.png" alt="rare grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 14:
 						// legend gem + hero grind
+						possibility[0] += '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_hero.png" alt="hero grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 
 					case 15:
 						// legend gem + legend grind
+						possibility[0] += '<img src="swcalc/img/gem_legend.png" alt="legend gem" class="gem">'
+						possibility[1] += '<img src="swcalc/img/grind_legend.png" alt="legend grind" class="grind">'
+						div += '<p>' + possibility.join(' + ') + '</p>'
 						break
 				}
 			}
