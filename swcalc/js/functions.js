@@ -367,11 +367,11 @@ function getUpsSubstats(value, stat) {
 	}
 
 	while (value > 0 && value < subRange.min) {
-		ups[ups.length - 1]--
+		ups[ups.indexOf(Math.max(ups))]--
 		value++
 	}
 
-	ups.push(value)
+	if (value > 0) ups.push(value)
 	ups.sort()
 
 	return ups
