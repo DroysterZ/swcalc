@@ -191,7 +191,7 @@ function calcularRunas() {
 
 			temp = getUpsSubstats(status.value, status.atributo)
 			if (temp.length > 5) temp = [0]
-			ups.push()
+			ups.push(temp)
 
 			let gem = getGemstoneStatus(status.atributo)
 			let grind = getGrindstoneStatus(status.atributo)
