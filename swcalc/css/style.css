@@ -147,11 +147,15 @@ button:hover {
 }
 
 .finalRunes div[class^="r"] div div {
-	display: none;
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .finalRunes div[class^="r"]:hover div div {
-	display: block;
+	max-height: 500px; /* valor grande o suficiente para o conteúdo caber */
+	opacity: 1;
 }
 
 .finalRunes img.gem,

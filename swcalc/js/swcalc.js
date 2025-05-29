@@ -202,24 +202,31 @@ function calcularRunas() {
 					temp = getUpsSubstats(status.value - grind[r].max, status.atributo)
 					temp.push(grind[r].max)
 
-					ups.push(temp)
 				}
+				ups.push(temp)
 			}
 
 			for (r of rarity) {
 				temp = [0]
-				if (gem[r].max > status.value)
+				if (gem[r].max > status.value) {
 					temp = [gem[r].min + gem[r].max - status.value]
+				}
 
 				ups.push(temp)
 			}
 
 			for (rgem of rarity) {
 				for (rgrind of rarity) {
+					temp = [0]
+
+					if (!grind[r].max) {
+						ups.push(temp)
+						continue
+					}
+					
 					let tempGem = gem[rgem].max
 					let tempGrind = grind[rgrind].max
 
-					temp = [0]
 					if (tempGem + tempGrind > status.value) {
 						let control = 0;
 						while (tempGem + tempGrind > status.value && (tempGem > gem[rgem].min || tempGrind > grind[rgrind].min)) {
