@@ -201,7 +201,6 @@ function calcularRunas() {
 				if (grind[r].max) {
 					temp = getUpsSubstats(status.value - grind[r].max, status.atributo)
 					let tempSum = temp.reduce((p, a) => { p + a, 0 })
-					debugger
 					let tempGrind = grind[r].max
 					if (tempSum + tempGrind > status.value) tempGrind -= tempSum + tempGrind - status.value
 					temp.push(tempGrind)
