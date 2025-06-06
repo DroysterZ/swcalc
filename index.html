@@ -17,6 +17,16 @@
 
 <body>
 	<div class="container">
+		<div class="monster-select">
+			<div class="monster-info">
+				<img id="monster-img" src="swcalc/img/default.jpeg" alt="Selecione um monstro" />
+			</div>
+			<div class="monster-search">
+				<input type="text" id="monster-name" placeholder="Buscar monstro..." autocomplete="off" />
+				<ul id="monster-suggestions"></ul>
+			</div>
+		</div>
+
 		<div class="stat-table">
 			<div class="header-row">
 				<div></div>
@@ -203,6 +213,7 @@
 		</div>
 	</div>
 	<script src="swcalc/js/functions.js"></script>
+	<script src="swcalc/js/monsters.js"></script>
 	<script src="swcalc/js/swcalc.js"></script>
 </body>
 
