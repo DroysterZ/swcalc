@@ -39,7 +39,6 @@ function selectMonster(mon) {
 }
 
 let monsters = []
-debugger
 fetch('swcalc/json/monsters.json')
 	.then(res => res.json())
 	.then(data => {
